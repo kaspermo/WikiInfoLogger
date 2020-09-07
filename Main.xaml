@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1848,3267" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1786,2739" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ucat="clr-namespace:UiPath.Core.Activities.TextModifications;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
       <x:String>System.Activities</x:String>
@@ -65,40 +65,44 @@
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="889,3102" sap2010:WorkflowViewState.IdRef="Sequence_40">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+      <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="672,2574" sap2010:WorkflowViewState.IdRef="Sequence_53">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="MunicipalSeat" />
       <Variable x:TypeArguments="x:String" Name="MunicipalCode" />
       <Variable x:TypeArguments="x:String" Name="Website" />
-      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(of string) from {&quot;https://da.wikipedia.org/wiki/K%C3%B8benhavns_Kommune&quot;, &quot;https://da.wikipedia.org/wiki/Frederiksberg_Kommune&quot;, &quot;https://da.wikipedia.org/wiki/Gentofte_Kommune&quot;}]" Name="Links" />
+      <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(of string) from {&quot;Københavns&quot;, &quot;Frederiksberg&quot;, &quot;Gentofte&quot;}]" Name="Links" />
+      <Variable x:TypeArguments="ui:Browser" Name="CurrentPage" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="847,3010" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[Links]">
-      <ui:ForEach.Body>
-        <ActivityAction x:TypeArguments="x:String">
+    <ui:OpenBrowser BrowserType="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="630,2482" sap2010:WorkflowViewState.IdRef="OpenBrowser_6" UiBrowser="[CurrentPage]" Url="Wikipedia.org">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:String" Name="link" />
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="811,2875" sap2010:WorkflowViewState.IdRef="Sequence_39">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="ui:Browser" Name="CurrentPage" />
-            </Sequence.Variables>
+          <Sequence DisplayName="Browser Activity" sap:VirtualizedContainerService.HintSize="596,2380" sap2010:WorkflowViewState.IdRef="Sequence_52">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:OpenBrowser BrowserType="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="769,2721" sap2010:WorkflowViewState.IdRef="OpenBrowser_5" UiBrowser="[CurrentPage]" Url="[link]">
-              <ui:OpenBrowser.Body>
-                <ActivityAction x:TypeArguments="x:Object">
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each link in Links" sap:VirtualizedContainerService.HintSize="554,2226" sap2010:WorkflowViewState.IdRef="ForEach`1_8" Values="[Links]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
                   <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                    <DelegateInArgument x:TypeArguments="x:String" Name="link" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="735,2619" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="518,2092" sap2010:WorkflowViewState.IdRef="Sequence_51">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="x:String" Name="PageTitle" />
                     </Sequence.Variables>
@@ -107,7 +111,41 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="title" DisplayName="Get Attribute" sap:VirtualizedContainerService.HintSize="693,96" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'INPUT  searchInput'" EmptyField="True" sap:VirtualizedContainerService.HintSize="476,96" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[link+&quot; Kommune&quot;]">
+                      <ui:TypeInto.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="846a691c-75cf-4ecb-be1a-3cf4958b6d58" Selector="&lt;webctrl tag='INPUT' type='search' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:TypeInto.Target>
+                    </ui:TypeInto>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'I'" sap:VirtualizedContainerService.HintSize="476,68" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="3c6f8495-e414-41e1-8643-44d8a4593969" Selector="&lt;webctrl parentid='search-form' tag='I' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                    </ui:Click>
+                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="title" DisplayName="Get Attribute" sap:VirtualizedContainerService.HintSize="476,96" sap2010:WorkflowViewState.IdRef="GetAttribute_2">
                       <ui:GetAttribute.Result>
                         <OutArgument x:TypeArguments="x:String">[PageTitle]</OutArgument>
                       </ui:GetAttribute.Result>
@@ -122,7 +160,7 @@
                         </ui:Target>
                       </ui:GetAttribute.Target>
                     </ui:GetAttribute>
-                    <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="693,2391" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                    <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,1558" sap2010:WorkflowViewState.IdRef="Sequence_61">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="Municipality" />
                       </Sequence.Variables>
@@ -131,13 +169,13 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'CurrentPage'" sap:VirtualizedContainerService.HintSize="651,2299" sap2010:WorkflowViewState.IdRef="BrowserScope_13" Selector="&lt;html title='{{PageTitle}}' /&gt;">
+                      <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Attach Browser 'CurrentPage'" sap:VirtualizedContainerService.HintSize="434,1466" sap2010:WorkflowViewState.IdRef="BrowserScope_15" Selector="&lt;html title='{{PageTitle}}' /&gt;">
                         <ui:BrowserScope.Body>
                           <ActivityAction x:TypeArguments="x:Object">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="617,2191" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                            <Sequence DisplayName="ExtractAndLogData" sap:VirtualizedContainerService.HintSize="376,1358" sap2010:WorkflowViewState.IdRef="Sequence_60">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="MunicipalName" />
                                 <Variable x:TypeArguments="scg:IEnumerable(str:Match)" Name="Matches" />
@@ -147,16 +185,16 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[Municipality]" DisplayName="Extract Structured Data 'Municipality'" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest' /&gt;" sap:VirtualizedContainerService.HintSize="575,68" sap2010:WorkflowViewState.IdRef="ExtractData_11" MaxNumberOfResults="100" SimulateClick="True">
+                              <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[Municipality]" DisplayName="Extract Structured Data 'Municipality'" ExtractMetadata="&lt;extract-table get_columns_name=&quot;*&quot; get_empty_columns=&quot;*&quot; columns_name_source=&quot;Longest&quot;/&gt;" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="ExtractData_13" MaxNumberOfResults="100" SimulateClick="True">
                                 <ui:ExtractData.Target>
-                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07e95be2-8874-4628-a154-f02e7a9b88e2" Selector="&lt;webctrl idx='1' tag='TABLE' /&gt;" WaitForReady="COMPLETE">
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="07e95be2-8874-4628-a154-f02e7a9b88e2" Selector="&lt;webctrl tag='TABLE' /&gt;" WaitForReady="COMPLETE">
                                     <ui:Target.TimeoutMS>
                                       <InArgument x:TypeArguments="x:Int32" />
                                     </ui:Target.TimeoutMS>
                                   </ui:Target>
                                 </ui:ExtractData.Target>
                               </ui:ExtractData>
-                              <ui:FilterDataTable DataTable="[Municipality]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="575,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[Municipality]" SelectColumnsMode="Keep">
+                              <ui:FilterDataTable DataTable="[Municipality]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_5" OutputDataTable="[Municipality]" SelectColumnsMode="Keep">
                                 <ui:FilterDataTable.Filters>
                                   <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                                     <ui:FilterOperationArgument BooleanOperator="And" Operator="CONTAINS">
@@ -191,129 +229,122 @@
                                   </scg:List>
                                 </ui:FilterDataTable.SelectColumns>
                               </ui:FilterDataTable>
-                              <ui:Matches BuilderPattern="(?:\S+ Kommune?){1,1}" sap:VirtualizedContainerService.HintSize="575,59" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[PageTitle]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\S+ Kommune?&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;1&quot;}]" Pattern="(?:\S+ Kommune?){1,1}" RegexOption="IgnoreCase" Result="[Matches]" />
-                              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="575,286" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[Matches]">
+                              <ui:Matches BuilderPattern="(?:\S+ Kommune?){1,1}" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="Matches_5" Input="[PageTitle]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;LIT&quot;,&quot;OperationName&quot;:&quot;Literal&quot;,&quot;OperationValue&quot;:&quot;\\S+ Kommune?&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;BXYT&quot;,&quot;QuantifierName&quot;:&quot;Between x and y times&quot;,&quot;QuantifierSecondValue&quot;:&quot;1&quot;}]" Pattern="(?:\S+ Kommune?){1,1}" RegexOption="IgnoreCase" Result="[Matches]" />
+                              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="ForEach`1_9" Values="[Matches]">
                                 <ui:ForEach.Body>
                                   <ActivityAction x:TypeArguments="x:Object">
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="x:Object" Name="match" />
                                     </ActivityAction.Argument>
-                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_41">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:String">[MunicipalName]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:String">[match.ToString]</InArgument>
-                                        </Assign.Value>
-                                      </Assign>
-                                    </Sequence>
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[MunicipalName]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[match.ToString]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
                                   </ActivityAction>
                                 </ui:ForEach.Body>
                               </ui:ForEach>
-                              <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="575,935" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Municipality.Rows]">
+                              <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each row in Municipality" sap:VirtualizedContainerService.HintSize="334,194" sap2010:WorkflowViewState.IdRef="ForEach`1_11" Values="[Municipality.Rows]">
                                 <ui:ForEach.Body>
                                   <ActivityAction x:TypeArguments="sd:DataRow">
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                                     </ActivityAction.Argument>
-                                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="539,801" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                    <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[Municipality.Rows.IndexOf(row)]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Switch`1_4">
+                                      <Switch.Default>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Warn" Message="[&quot;An extra case was found unexpectedly. The result was: &quot; + row.Item(1).ToString]" />
+                                      </Switch.Default>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Switch x:TypeArguments="x:Int32" DisplayName="Switch" Expression="[Municipality.Rows.IndexOf(row)]" sap:VirtualizedContainerService.HintSize="497,709" sap2010:WorkflowViewState.IdRef="Switch`1_1">
-                                        <Switch.Default>
-                                          <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,62" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;An extra case was found unexpectedly. The result was: &quot; + row.Item(1).ToString]" />
-                                        </Switch.Default>
-                                        <ui:ModifyText x:Key="0" DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="434,247" sap2010:WorkflowViewState.IdRef="ModifyText_1" OutputText="[MunicipalSeat]" SourceText="[row.Item(1).ToString]">
-                                          <ui:ModifyText.Body>
-                                            <ActivityAction>
-                                              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                      <ui:ModifyText x:Key="0" DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="434,247" sap2010:WorkflowViewState.IdRef="ModifyText_7" OutputText="[MunicipalSeat]" SourceText="[row.Item(1).ToString]">
+                                        <ui:ModifyText.Body>
+                                          <ActivityAction>
+                                            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_62">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ucat:TrimTextModification DisplayName="Trim text" sap:VirtualizedContainerService.HintSize="382,52" sap2010:WorkflowViewState.IdRef="TrimTextModification_7" />
+                                            </Sequence>
+                                          </ActivityAction>
+                                        </ui:ModifyText.Body>
+                                      </ui:ModifyText>
+                                      <ui:ModifyText x:Key="1" DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="434,247" sap2010:WorkflowViewState.IdRef="ModifyText_8" OutputText="[MunicipalCode]" SourceText="[row.Item(1).ToString]">
+                                        <ui:ModifyText.Body>
+                                          <ActivityAction>
+                                            <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_63">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ucat:TrimTextModification DisplayName="Trim text" sap:VirtualizedContainerService.HintSize="382,52" sap2010:WorkflowViewState.IdRef="TrimTextModification_8" />
+                                            </Sequence>
+                                          </ActivityAction>
+                                        </ui:ModifyText.Body>
+                                      </ui:ModifyText>
+                                      <Sequence x:Key="2" sap:VirtualizedContainerService.HintSize="382,477" sap2010:WorkflowViewState.IdRef="Sequence_65">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:Matches BuilderPattern="www.\S+.dk" sap:VirtualizedContainerService.HintSize="340,59" sap2010:WorkflowViewState.IdRef="Matches_7" Input="[row.Item(1).ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;www.\\S+.dk&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="www.\S+.dk" RegexOption="IgnoreCase" Result="[Matches]" />
+                                        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="340,286" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[Matches]">
+                                          <ui:ForEach.Body>
+                                            <ActivityAction x:TypeArguments="x:Object">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="x:Object" Name="match" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_64">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <ucat:TrimTextModification DisplayName="Trim text" sap:VirtualizedContainerService.HintSize="382,52" sap2010:WorkflowViewState.IdRef="TrimTextModification_1" />
+                                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:String">[Website]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:String">[match.ToString]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
                                               </Sequence>
                                             </ActivityAction>
-                                          </ui:ModifyText.Body>
-                                        </ui:ModifyText>
-                                        <ui:ModifyText x:Key="1" DisplayName="Modify Text" sap:VirtualizedContainerService.HintSize="434,247" sap2010:WorkflowViewState.IdRef="ModifyText_2" OutputText="[MunicipalCode]" SourceText="[row.Item(1).ToString]">
-                                          <ui:ModifyText.Body>
-                                            <ActivityAction>
-                                              <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                                <ucat:TrimTextModification DisplayName="Trim text" sap:VirtualizedContainerService.HintSize="382,52" sap2010:WorkflowViewState.IdRef="TrimTextModification_2" />
-                                              </Sequence>
-                                            </ActivityAction>
-                                          </ui:ModifyText.Body>
-                                        </ui:ModifyText>
-                                        <Sequence x:Key="2" sap:VirtualizedContainerService.HintSize="382,477" sap2010:WorkflowViewState.IdRef="Sequence_34">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <ui:Matches BuilderPattern="www.\S+.dk" sap:VirtualizedContainerService.HintSize="340,59" sap2010:WorkflowViewState.IdRef="Matches_1" Input="[row.Item(1).ToString]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;ADV&quot;,&quot;OperationName&quot;:&quot;Advanced&quot;,&quot;OperationValue&quot;:&quot;www.\\S+.dk&quot;,&quot;QuantifierFirstValue&quot;:&quot;1&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="www.\S+.dk" RegexOption="IgnoreCase" Result="[Matches]" />
-                                          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="340,286" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Matches]">
-                                            <ui:ForEach.Body>
-                                              <ActivityAction x:TypeArguments="x:Object">
-                                                <ActivityAction.Argument>
-                                                  <DelegateInArgument x:TypeArguments="x:Object" Name="match" />
-                                                </ActivityAction.Argument>
-                                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-                                                    <Assign.To>
-                                                      <OutArgument x:TypeArguments="x:String">[Website]</OutArgument>
-                                                    </Assign.To>
-                                                    <Assign.Value>
-                                                      <InArgument x:TypeArguments="x:String">[match.ToString]</InArgument>
-                                                    </Assign.Value>
-                                                  </Assign>
-                                                </Sequence>
-                                              </ActivityAction>
-                                            </ui:ForEach.Body>
-                                          </ui:ForEach>
-                                        </Sequence>
-                                      </Switch>
-                                    </Sequence>
+                                          </ui:ForEach.Body>
+                                        </ui:ForEach>
+                                      </Sequence>
+                                    </Switch>
                                   </ActivityAction>
                                 </ui:ForEach.Body>
                               </ui:ForEach>
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="575,93" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Results for &quot;+MunicipalName+&quot;:&quot;]" />
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="575,93" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Municipal seat: &quot; + MunicipalSeat]" />
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="575,93" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Municipal code: &quot; + MunicipalCode]" />
-                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="575,93" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Website: &quot; + Website]" />
+                              <ui:LogMessage DisplayName="Log ResultName" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Results for &quot;+MunicipalName+&quot;:&quot;]" />
+                              <ui:LogMessage DisplayName="Log Seat" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Municipal seat: &quot; + MunicipalSeat]" />
+                              <ui:LogMessage DisplayName="Log Code" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Municipal code: &quot; + MunicipalCode]" />
+                              <ui:LogMessage DisplayName="Log Website" sap:VirtualizedContainerService.HintSize="334,93" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Website: &quot; + Website]" />
                             </Sequence>
                           </ActivityAction>
                         </ui:BrowserScope.Body>
                       </ui:BrowserScope>
                     </Sequence>
+                    <ui:GoBack Browser="{x:Null}" DisplayName="Go Back" sap:VirtualizedContainerService.HintSize="476,22" sap2010:WorkflowViewState.IdRef="GoBack_2" />
                   </Sequence>
                 </ActivityAction>
-              </ui:OpenBrowser.Body>
-            </ui:OpenBrowser>
-            <ui:CloseTab Browser="[CurrentPage]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="769,22" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
+              </ui:ForEach.Body>
+            </ui:ForEach>
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="554,22" sap2010:WorkflowViewState.IdRef="CloseTab_3" />
           </Sequence>
         </ActivityAction>
-      </ui:ForEach.Body>
-    </ui:ForEach>
+      </ui:OpenBrowser.Body>
+    </ui:OpenBrowser>
   </Sequence>
 </Activity>

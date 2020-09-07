@@ -1,6 +1,6 @@
 {
   "name": "WikiInfoLogger",
-  "description": "Finds and logs wikipedia information about the three danish municipalities Frederiksberg, København og Gentofte",
+  "description": "Navigates to wikipedia pages for the three danish municipalities Frederiksberg, København and Gentofte, finds their minicipal seat/code and webpage and logs it",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.1-preview]",
